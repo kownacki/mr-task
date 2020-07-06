@@ -6,7 +6,7 @@ export default function TextSquare(props) {
       <img src={props.img}/>
       <div className="text-square-overlay"></div>
       <div className="text-square-wrapper">
-        <div className="text-square-content">
+        <div className={'text-square-content' + (props.small ? ' small' : '')}>
           {props.text}
         </div>
       </div>
