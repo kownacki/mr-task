@@ -1,7 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-See live version at https://kownacki.github.io/mr-task/
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -22,6 +20,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-### `npm deploy`
-
-Deploy to the address set at `homepage` field in `package.json`.
