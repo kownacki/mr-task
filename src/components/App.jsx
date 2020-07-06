@@ -9,7 +9,7 @@ export default class App extends React.Component {
       <div className="app">
         <SquareLayout>
           <div></div>
-          <SquareLayout>
+          <SquareLayout small>
             <img className="fit" src={layout.rightTop.leftTop.img} />
             <img className="fit" src={layout.rightTop.rightTop.img}/>
             <img className="fit" src={layout.rightTop.leftBottom.img}/>
