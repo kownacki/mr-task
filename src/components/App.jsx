@@ -1,23 +1,30 @@
 import React from 'react';
-import {layout} from '../data.js';
-import SquareLayout from './SquareLayout.jsx';
-import TextSquare from './TextSquare.jsx';
+import Home from './Home.jsx';
+import Houses from './Houses.jsx';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <SquareLayout>
-          <div></div>
-          <SquareLayout small>
-            <img className="fit" src={layout.rightTop.leftTop.img} />
-            <img className="fit" src={layout.rightTop.rightTop.img}/>
-            <img className="fit" src={layout.rightTop.leftBottom.img}/>
-            <TextSquare small text={layout.rightTop.rightBottom.text} img={layout.rightTop.rightBottom.img}></TextSquare>
-          </SquareLayout>
-          <TextSquare text={layout.leftBottom.text} img={layout.leftBottom.img}></TextSquare>
-          <div></div>
-        </SquareLayout>
+        <Router>
+          <div>
+            <Switch>
+              <Route path="/houses">
+                <Houses />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
     );
   }
