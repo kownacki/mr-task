@@ -1,14 +1,15 @@
 import React from 'react';
 import SquareLayout from './SquareLayout.jsx';
-import {Link} from 'react-router-dom';
 import {layout} from '../data.js';
 import TextSquare from './TextSquare.jsx';
+import {connect} from 'react-redux';
+import {navigateToHouses} from '../redux/actions.js';
 
-export default function Home(props) {
+function Home(props) {
   return (
     <SquareLayout>
       <div>
-        <Link to="/houses">Houses</Link>
+        <button onClick={props.navigateToHouses}>Zobacz więcej</button>
       </div>
       <SquareLayout small>
         <img className="fit" src={layout.rightTop.leftTop.img} />
@@ -20,4 +21,9 @@ export default function Home(props) {
       <div></div>
     </SquareLayout>
   );
-};
+}
+
+export default connect(
+  (state) => ({reduxState: state}),
+  {navigateToHouses},
+)(Home);
