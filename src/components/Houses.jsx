@@ -2,7 +2,8 @@ import React from 'react';
 import * as api from '../api.js';
 import {connect} from 'react-redux';
 import {LOADING_HOUSES, SUCCESS_HOUSES, FAILURE_HOUSES} from '../redux/actionTypes.js';
-import {navigateToHome, startFetchHouses, successFetchHouses, failureFetchHouses} from '../redux/actions.js';
+import {navigateToHome, startFetchHouses, successFetchHouses, failureFetchHouses, deleteHouse} from '../redux/actions.js';
+import {AiFillDelete} from 'react-icons/ai';
 
 class Houses extends React.Component {
   async componentDidMount() {
@@ -13,6 +14,10 @@ class Houses extends React.Component {
     } else {
       this.props.failureFetchHouses();
     }
+  }
+  handleDelete(houseID) {
+    // todo send delete to server
+    this.props.deleteHouse(houseID)
   }
   render() {
     return (
@@ -27,7 +32,7 @@ class Houses extends React.Component {
               ? (
                 <ul>
                   {this.props.reduxState.houses.map((house) =>
-                    <div>{house._id}</div>
+                    <div key={house._id}>{house._id} <AiFillDelete onClick={() => this.handleDelete(house._id)}/></div>
                   )}
                 </ul>
               )
@@ -48,5 +53,5 @@ class Houses extends React.Component {
 
 export default connect(
   (state) => ({reduxState: state}),
-  {navigateToHome, startFetchHouses, successFetchHouses, failureFetchHouses},
+  {navigateToHome, startFetchHouses, successFetchHouses, failureFetchHouses, deleteHouse},
 )(Houses);

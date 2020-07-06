@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
-import {HOME_ROUTE, HOUSES_ROUTE, SUCCESS_HOUSES, FAILURE_HOUSES, LOADING_HOUSES} from './actionTypes.js';
+import {HOME_ROUTE, HOUSES_ROUTE, SUCCESS_HOUSES, FAILURE_HOUSES, LOADING_HOUSES, DELETE_HOUSE} from './actionTypes.js';
 
 const initialState = {
   route: HOME_ROUTE,
@@ -17,16 +17,24 @@ function appReducer(state = initialState, action) {
       };
     case LOADING_HOUSES:
       return {
+        ...state,
         housesStatus: LOADING_HOUSES,
       };
     case SUCCESS_HOUSES:
       return {
+        ...state,
         housesStatus: SUCCESS_HOUSES,
         houses: action.houses,
       };
     case FAILURE_HOUSES:
       return {
+        ...state,
         housesStatus: FAILURE_HOUSES,
+      };
+    case DELETE_HOUSE:
+      return {
+        ...state,
+        houses: state.houses.filter((house) => house._id !== action.id),
       };
     // case LOADING_REPOS: {
     //   return {
